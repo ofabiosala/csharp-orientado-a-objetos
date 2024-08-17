@@ -6,6 +6,6 @@ musicOne.genre = "Rock";
 musicOne.album = "Help!";
 musicOne.year = 1965;
 musicOne.duration = 123;
-musicOne.setActive(false);
+musicOne.Active = true;
 
 musicOne.ShowMusicInfo();
