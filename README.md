@@ -4,10 +4,27 @@ Este repositório tem por objetivo registrar anotações e armazenar projetos pr
 
 ### Sumário
 
+- [Modificadores de Acesso](#modificadores-de-acesso)
 - [Classes](#classes)
 - [Objetos](#objetos)
 - [Atribuição de Valores](#atribuição-de-valores)
 - [Invocação de Métodos](#invocação-de-métodos)
+
+### Modificadores de Acesso
+
+Os principais modificadores de acesso em C# são:
+
+#### Public
+
+O membro da classe é acessível a partir de qualquer outro código, sem restrições.
+
+#### Private
+
+O membro da classe é acessível apenas dentro da própria classe ou estrutura onde está definido.
+
+#### Protected
+
+O membro da classe é acessível dentro da própria classe e por classes derivadas (herança).
 
 ### Classes
 
