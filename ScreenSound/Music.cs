@@ -6,14 +6,24 @@
     public string album;
     public int year;
     public int duration;
-    public bool active;
+    private bool active;
+
+    public bool getActive()
+    {
+        return active;
+    }
+
+    public void setActive(bool value)
+    {
+        active = value;
+    }
     public void ShowMusicInfo()
     {
         Console.WriteLine($"{title} - {artist}");
         Console.WriteLine($"{album} ({year}) - {genre}");
         Console.WriteLine($"{duration} segundos");
 
-        if (active)
+        if (getActive())
         {
             Console.WriteLine("Ativa");
         }
