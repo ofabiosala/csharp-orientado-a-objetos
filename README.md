@@ -39,7 +39,7 @@ Class nome
 
     // Métodos
 
-    visibilidade nome()
+    visibilidade tipo nome()
     {
         // Código ...
     }
@@ -54,12 +54,12 @@ Class Pessoa
     public string nome;
     public int idade;
 
-    public ExibirNome()
+    public void ExibirNome()
     {
         Console.WriteLine(nome);
     }
 
-    public ExibirIdade()
+    public void ExibirIdade()
     {
         Console.WriteLine(idade);
     }
