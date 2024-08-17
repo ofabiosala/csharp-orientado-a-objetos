@@ -7,4 +7,19 @@
     public int year;
     public int duration;
     public bool active;
+    public void ShowMusicInfo()
+    {
+        Console.WriteLine($"{title} - {artist}");
+        Console.WriteLine($"{album} ({year}) - {genre}");
+        Console.WriteLine($"{duration} segundos");
+
+        if (active)
+        {
+            Console.WriteLine("Ativa");
+        }
+        else
+        {
+            Console.WriteLine("Inativa");
+        }
+    }
 }
