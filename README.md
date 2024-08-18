@@ -9,6 +9,10 @@ Este repositório tem por objetivo registrar anotações e armazenar projetos pr
 - [Objetos](#objetos)
 - [Atribuição de Valores](#atribuição-de-valores)
 - [Invocação de Métodos](#invocação-de-métodos)
+- [Atributos e Propriedades](#atributos-e-propriedades)
+- [Métodos "get" e "set"](#métodos-get-e-set)
+- [Funções Anônimas](#funções-anônimas)
+- [Lambda](#lambda)
 
 ### Modificadores de Acesso
 
@@ -126,7 +130,7 @@ São variáveis que são declaradas dentro de uma classe para armazenar dados so
 
 #### Propriedades (Properties)
 
-Fornecem uma forma de acessar e modificar os atributos de uma classe de maneira controlada. Elas encapsulam a lógica de acesso aos atributos e podem incluir lógica adicional na forma de métodos **get** para leitura e **set** para escrita, permitindo maior controle sobre como os valores são acessados e modificados.
+Fornecem uma forma de acessar e modificar os atributos de uma classe de maneira controlada. Elas encapsulam a lógica de acesso aos atributos e podem incluir lógica adicional na forma de métodos ``get`` para leitura e ``set`` para escrita, permitindo maior controle sobre como os valores são acessados e modificados.
 
 > O nome de uma propriedade deve seguir o padrão **PascalCase**. Isso significa que se o nome da propriedade for composto todas as palavras devem iniciar com letra **maiúscula**.
 
@@ -147,8 +151,10 @@ O método ``set`` é usado para modificar o valor de uma propriedade. Quando voc
 ```C#
 public class Pessoa
 {
+    // Atributo
     private string nome;
 
+    // Propriedade
     public string Nome
     {
         get { return nome; }  // O método "get" retorna o valor do atributo privado "nome".
@@ -161,14 +167,14 @@ public class Pessoa
 // Cria uma nova instância da classe Pessoa.
 Pessoa pessoa = new Pessoa();
         
-// Atribui um valor à propriedade Nome usando o método set.
+// Atribui um valor ao atributo privado "nome" usando o método "set" da propriedade "Nome".
 pessoa.Nome = "Fábio";
         
-// Exibe o valor da propriedade Nome usando o método get.
+// Exibe o valor do atributo privado "nome" usando o método "get" da propriedade "Nome".
 Console.WriteLine($"Nome: {pessoa.Nome}");
 ```
 
-> Não é obrigatória a criação de um atributo e uma propriedade para cada campo em uma classe, mas é uma prática comum e recomendada em Programação Orientada a Objetos (POO) para garantir o encapsulamento e controle sobre o acesso aos dados da classe.
+> Não é obrigatória a criação de um atributo e uma propriedade para cada campo em uma classe, mas é uma prática comum e recomendada na linguagem C# utilizando o paradigma de orientação a objetos para garantir o encapsulamento e controle sobre o acesso aos dados da classe.
 
 > Caso não seja necessário o uso de lógica adicional ou controle sobre como um campo é acessado e modificado, pode-se optar por usar campos públicos diretamente.
 
@@ -180,7 +186,9 @@ Uma função anônima é uma função sem um nome definido. Esta pode ser uiliza
 
 ### Lambda
 
-Uma expressão ou função lambda é uma forma de definir uma função anônima de maneira concisa usando o operador ``=>`` (Arrow Function).
+Uma expressão ou função lambda é uma forma de definir uma função anônima de maneira concisa usando o operador ``=>``.
+
+**Exemplo:**
 
 ```C#
 public int Soma(int numeroA, int numeroB) => numeroA + numeroB;
@@ -188,7 +196,7 @@ public int Soma(int numeroA, int numeroB) => numeroA + numeroB;
 
 #### Vantagens
 
-**Concisão:** Permitem escrever código de forma mais concisa, eliminando a necessidade de definir métodos separados para funções simples.
+**Concisão:** Permite escrever código de forma mais concisa, eliminando a necessidade de definir métodos separados para funções simples.
 
 **Legibilidade:** São mais fáceis de ler e entender, especialmente quando o critério de filtragem ou a lógica do código é curto e direto.
 
@@ -200,7 +208,7 @@ public int Soma(int numeroA, int numeroB) => numeroA + numeroB;
 
 Embora as funções lambda sejam uma ferramenta poderosa e muito usada no mundo de desenvolvimento C#, há situações em que é mais apropriado evitar o seu uso, como mostra os pontos abaixo:
 
-**Complexidade Excessiva:** Se a lógica da expressão lambda se tornar muito complexa ou difícil de entender, é preferível usar métodos e blocos de código separados para manter a clareza e legibilidade do código.
+**Complexidade Excessiva:** Se a lógica da expressão lambda se tornar muito complexa ou difícil de entender, é preferível usar métodos ou blocos de código separados para manter a clareza e legibilidade do código.
 
 **Reutilização de Código:** Se você precisa reutilizar a lógica em várias partes do seu código, é mais adequado criar um método separado em vez de usar uma função lambda repetidamente. Isso promove a reutilização do código e torna mais fácil a manutenção.
 
