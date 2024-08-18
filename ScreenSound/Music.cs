@@ -1,26 +1,34 @@
 ﻿class Music
 {
-    public string title;
-    public string artist;
-    public string genre;
-    public string album;
-    public int year;
-    public int duration;
+    public string Title { get; set; }
+    public string Artist { get; set; }
+    public string Genre { get; set; }
+    public string Album { get; set; }
+    public int Year { get; set; }
+    public int Duration { get; set; }
+
     public bool Active { get; set; }
+
+    public string DurationInMinutes
+    {
+        get
+        {
+            return $"{Duration / 60}:{(Duration % 60).ToString("D2")}";
+            
+            /*
+                Formatação "D2"
+                O método ToString("D2") formata o número como um inteiro com pelo menos dois dígitos.
+                Se o número for menor que 10, ele será preenchido com um zero à esquerda.
+            */
+        }
+    }
+
+    public string Status => Active ? "Ativa" : "Inativa";
 
     public void ShowMusicInfo()
     {
-        Console.WriteLine($"{title} - {artist}");
-        Console.WriteLine($"{album} ({year}) - {genre}");
-        Console.WriteLine($"{duration} segundos");
-
-        if (Active)
-        {
-            Console.WriteLine("Ativa");
-        }
-        else
-        {
-            Console.WriteLine("Inativa");
-        }
+        Console.WriteLine($"{Title} - {Artist}");
+        Console.WriteLine($"{Album} - {Year} - {Genre}");
+        Console.WriteLine($"{DurationInMinutes} - {Status}");
     }
 }
