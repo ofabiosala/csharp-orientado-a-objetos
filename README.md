@@ -115,3 +115,93 @@ objeto.metodo();
 pessoaUm.ExibirNome(); // Fábio
 pessoaUm.ExibirIdade(); // 30
 ```
+
+### Atributos e Propriedades
+
+#### Atributos (Fields)
+
+São variáveis que são declaradas dentro de uma classe para armazenar dados sobre um objeto. Eles representam o estado interno do objeto e podem ser acessados e modificados diretamente. 
+
+> O nome de um atributo deve seguir o padrão **CamelCase**. Isso significa que se o nome do atributo for composto deve-se iniciar a primeira palavra com a letra **minúscula** e as demais iniciar com a letra **maiúscula**.
+
+#### Propriedades (Properties)
+
+Fornecem uma forma de acessar e modificar os atributos de uma classe de maneira controlada. Elas encapsulam a lógica de acesso aos atributos e podem incluir lógica adicional na forma de métodos **get** para leitura e **set** para escrita, permitindo maior controle sobre como os valores são acessados e modificados.
+
+> O nome de uma propriedade deve seguir o padrão **PascalCase**. Isso significa que se o nome da propriedade for composto todas as palavras devem iniciar com letra **maiúscula**.
+
+### Métodos "get" e "set"
+
+Os métodos ``get`` e ``set`` são usados dentro de propriedades para controlar o acesso a um atributo privado de uma classe. Eles proporcionam uma forma de encapsular a leitura e a escrita dos valores dos atributos, permitindo a implementação de lógica adicional quando necessário.
+
+#### get
+
+O método ``get`` é usado para acessar o valor de uma propriedade. Quando você lê o valor de uma propriedade, o método ``get`` é invocado. Ele retorna o valor atual do atributo associado à propriedade.
+
+#### set
+
+O método ``set`` é usado para modificar o valor de uma propriedade. Quando você atribui um valor a uma propriedade, o método ``set`` é invocado. Ele define o valor do atributo associado à propriedade e pode incluir lógica para validar ou transformar o valor antes de atribuí-lo.
+
+**Exemplo:**
+
+```C#
+public class Pessoa
+{
+    private string nome;
+
+    public string Nome
+    {
+        get { return nome; }  // O método "get" retorna o valor do atributo privado "nome".
+        set { nome = value; } // O método "set" define o valor do atributo privado "nome".
+    }
+}
+```
+
+```C#
+// Cria uma nova instância da classe Pessoa.
+Pessoa pessoa = new Pessoa();
+        
+// Atribui um valor à propriedade Nome usando o método set.
+pessoa.Nome = "Fábio";
+        
+// Exibe o valor da propriedade Nome usando o método get.
+Console.WriteLine($"Nome: {pessoa.Nome}");
+```
+
+> Não é obrigatória a criação de um atributo e uma propriedade para cada campo em uma classe, mas é uma prática comum e recomendada em Programação Orientada a Objetos (POO) para garantir o encapsulamento e controle sobre o acesso aos dados da classe.
+
+> Caso não seja necessário o uso de lógica adicional ou controle sobre como um campo é acessado e modificado, pode-se optar por usar campos públicos diretamente.
+
+> Apenas para "reforçar" o conceito quanto a utilização de propriedades, a manipulação de um atributo deve ser feita a partir da propriedade e não através do atributo diretamente.
+
+### Funções Anônimas
+
+Uma função anônima é uma função sem um nome definido. Esta pode ser uilizada em locais onde uma função é necessária, mas não é necessário (ou desejado) nomeá-la explicitamente.
+
+### Lambda
+
+Uma expressão ou função lambda é uma forma de definir uma função anônima de maneira concisa usando o operador ``=>`` (Arrow Function).
+
+```C#
+public int Soma(int numeroA, int numeroB) => numeroA + numeroB;
+```
+
+#### Vantagens
+
+**Concisão:** Permitem escrever código de forma mais concisa, eliminando a necessidade de definir métodos separados para funções simples.
+
+**Legibilidade:** São mais fáceis de ler e entender, especialmente quando o critério de filtragem ou a lógica do código é curto e direto.
+
+**Flexibilidade:** Podem ser usadas em várias situações, como filtrar, ordenar, mapear ou reduzir coleções de dados. Elas permitem que você especifique a lógica do código diretamente no local onde é necessário, sem a necessidade de criar métodos adicionais.
+
+**Encerramento de Escopo:** Têm acesso às variáveis do escopo em que são definidas, o que permite que você capture e utilize valores externos dentro da expressão lambda. Isso pode ser útil em casos onde você precisa fazer referência a variáveis externas dentro de um loop, por exemplo.
+
+#### Quando não é recomendado o uso de código lambda?
+
+Embora as funções lambda sejam uma ferramenta poderosa e muito usada no mundo de desenvolvimento C#, há situações em que é mais apropriado evitar o seu uso, como mostra os pontos abaixo:
+
+**Complexidade Excessiva:** Se a lógica da expressão lambda se tornar muito complexa ou difícil de entender, é preferível usar métodos e blocos de código separados para manter a clareza e legibilidade do código.
+
+**Reutilização de Código:** Se você precisa reutilizar a lógica em várias partes do seu código, é mais adequado criar um método separado em vez de usar uma função lambda repetidamente. Isso promove a reutilização do código e torna mais fácil a manutenção.
+
+**Aumento da Complexidade do Código:** Em alguns casos, o uso excessivo de expressões lambda pode tornar o código mais difícil de entender e dar manutenção, especialmente quando as expressões lambdas são aninhadas. Nesses casos, pode ser melhor dividir o código em partes menores e mais legíveis.
