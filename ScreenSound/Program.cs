@@ -1,11 +1,11 @@
 ﻿Music musicOne = new Music();
 
-musicOne.title = "Yesterday";
-musicOne.artist = "The Beatles";
-musicOne.genre = "Rock";
-musicOne.album = "Help!";
-musicOne.year = 1965;
-musicOne.duration = 123;
+musicOne.Title = "Yesterday";
+musicOne.Artist = "The Beatles";
+musicOne.Genre = "Rock";
+musicOne.Album = "Help!";
+musicOne.Year = 1965;
+musicOne.Duration = 123;
 musicOne.Active = true;
 
 musicOne.ShowMusicInfo();
