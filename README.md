@@ -148,6 +148,27 @@ O método ``set`` é usado para modificar o valor de uma propriedade. Quando voc
 
 **Exemplo:**
 
+#### Modelo 1 - Propriedade Auto-Implementada
+
+```C#
+public class Pessoa
+{
+    // Atributo
+    // Não explicitamente declarado, ou seja, gerado automaticamente pelo compilador.
+
+    // Propriedade
+    public string Nome { get; set; }
+}
+```
+
+> Este modelo utiliza uma propriedade auto-implementada, ou seja, o compilador do C# cria automaticamente um campo privado que não é visível no código fonte para armazenar o valor da propriedade. Esse campo é acessado e modificado internamente pela propriedade.
+
+> Por ser uma forma mais simples e direta de definir propriedades, é ideal quando não há necessidade de lógica adicional para o acesso ou modificação dos dados.
+
+> Porém, não há controle sobre como o valor é armazenado ou validado. Caso seja necessário adicionar lógica extra (como validação ou manipulação), precisará alterar para o **Modelo 2**.
+
+#### Modelo 2 - Propriedade Com Campo Privado
+
 ```C#
 public class Pessoa
 {
@@ -162,6 +183,12 @@ public class Pessoa
     }
 }
 ```
+
+> Este modelo define um campo privado denominado ``nome`` para armazenar o valor da propriedade. A propriedade ``Nome`` fornece acesso controlado a esse campo.
+
+> Isso permite que haja um controle total sobre como o valor é acessado e modificado. Isso é útil se precisar incluir uma lógica adicional nos métodos ``get`` ou ``set``, como validação, transformação ou logging, pois é possível fazê-lo diretamente dentro da propriedade.
+
+> O campo privado ``nome`` é visível apenas dentro da classe ``Pessoa``. O acesso a esse campo é feito por meio da propriedade ``Nome``, que pode ser facilmente ajustada se a lógica de armazenamento precisar ser alterada.
 
 ```C#
 // Cria uma nova instância da classe Pessoa.
