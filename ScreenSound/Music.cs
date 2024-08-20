@@ -2,9 +2,7 @@
 {
     public string Title { get; set; }
     public string Artist { get; set; }
-    public string Genre { get; set; }
-    public string Album { get; set; }
-    public int Year { get; set; }
+    public Genre Genre { get; set; }
     public int Duration { get; set; }
 
     public bool Active { get; set; }
@@ -28,7 +26,7 @@
     public void ShowMusicInfo()
     {
         Console.WriteLine($"{Title} - {Artist}");
-        Console.WriteLine($"{Album} - {Year} - {Genre}");
+        Console.WriteLine($"{Genre.Title}");
         Console.WriteLine($"{DurationInMinutes} - {Status}");
     }
 }
