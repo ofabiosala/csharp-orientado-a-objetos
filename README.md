@@ -11,6 +11,8 @@ Este repositório tem por objetivo registrar anotações e armazenar projetos pr
 - [Invocação de Métodos](#invocação-de-métodos)
 - [Atributos e Propriedades](#atributos-e-propriedades)
 - [Métodos "get" e "set"](#métodos-get-e-set)
+- [Construtores](#construtores)
+- [Inicializadores](#inicializadores)
 - [Funções Anônimas](#funções-anônimas)
 - [Lambda](#lambda)
 
@@ -206,6 +208,62 @@ Console.WriteLine($"Nome: {pessoa.Nome}");
 > Caso não seja necessário o uso de lógica adicional ou controle sobre como um campo é acessado e modificado, pode-se optar por usar campos públicos diretamente.
 
 > Apenas para "reforçar" o conceito quanto a utilização de propriedades, a manipulação de um atributo deve ser feita a partir da propriedade e não através do atributo diretamente.
+
+### Construtores
+
+Para utilizar um construtor em uma classe C# deve seguir a seguinte regra:
+
+```C#
+visibilidade nome(tipo nome, ...)
+{
+        // Código ...
+}
+```
+
+**Exemplo:**
+
+```C#
+public class Pessoa
+{
+    // Propriedade
+    public string Nome { get; set; }
+
+    // Construtor
+    public Pessoa(string nome)
+    {
+        Nome = nome;
+    }
+}
+```
+
+```C#
+Pessoa pessoaUm = new Pessoa("Fábio");
+
+Console.WriteLine(pessoaUm.Nome); // Fábio
+```
+
+### Inicializadores
+
+Em C#, utilizamos inicializadores quando necessitamos definir valores simples e não há necessidade de lógica adicional.
+
+**Exemplo:**
+
+```C#
+public class Pessoa
+{
+    // Propriedade
+    public string Nome { get; set; }
+}
+```
+
+```C#
+Pessoa pessoaUm = new Pessoa
+{
+    Nome = "Fábio"
+};
+
+Console.WriteLine(pessoaUm.Nome); // Fábio
+```
 
 ### Funções Anônimas
 
