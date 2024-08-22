@@ -1,31 +1,45 @@
-﻿Genre genreOne = new Genre();
+﻿// Artistas
 
-genreOne.Title = "Rock";
+Artist artistOne = new Artist("The Beatles");
 
-Music musicOne = new Music();
+// Gêneros
 
-musicOne.Title = "Yesterday";
-musicOne.Artist = "The Beatles";
-musicOne.Genre = genreOne;
-musicOne.Duration = 123;
-musicOne.Active = true;
+Genre genreOne = new Genre("Rock");
 
-Music musicTwo = new Music();
+// Músicas
 
-musicTwo.Title = "Ticket To Ride";
-musicTwo.Artist = "The Beatles";
-musicTwo.Genre = genreOne;
-musicTwo.Duration = 190;
-musicTwo.Active = true;
+Music musicOne = new Music("Yesterday", artistOne, genreOne, 123, true);
+Music musicTwo = new Music("Ticket To Ride", artistOne, genreOne, 190, true);
+Music musicThree = new Music("Let It Be", artistOne, genreOne, 243, true);
+Music musicFour = new Music("Come Together", artistOne, genreOne, 259, true);
 
-Album albumOne = new Album();
+// Álbuns
 
-albumOne.Title = "Help!";
-albumOne.Artist = "The Beatles";
-albumOne.Genre = genreOne;
-albumOne.Year = 1965;
+Album albumOne = new Album("Help!", artistOne, genreOne, 1965);
+Album albumTwo = new Album("Let It Be", artistOne, genreOne, 1970);
+Album albumThree = new Album("Abbey Road", artistOne, genreOne, 1969);
+
+// Músicas X Álbuns
 
 albumOne.AddMusic(musicOne);
 albumOne.AddMusic(musicTwo);
 
+albumTwo.AddMusic(musicThree);
+
+albumThree.AddMusic(musicFour);
+
+// Artistas X Álbuns
+
+artistOne.AddAlbum(albumOne);
+artistOne.AddAlbum(albumTwo);
+artistOne.AddAlbum(albumThree);
+
+// Informações de Álbuns
+
 albumOne.ShowAlbumInfo();
+albumTwo.ShowAlbumInfo();
+albumThree.ShowAlbumInfo();
+
+// Discografia do Artista
+
+artistOne.ShowAlbuns();
