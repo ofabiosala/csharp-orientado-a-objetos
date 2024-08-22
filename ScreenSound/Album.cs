@@ -1,8 +1,17 @@
 ﻿class Album
 {
+    public Album(string title, Artist artist, Genre genre, int year)
+    {
+        Title = title;
+        Artist = artist;
+        Genre = genre;
+        Year = year;
+    }
+
     private List<Music> musics = new List<Music>();
+
     public string Title { get; set; }
-    public string Artist { get; set; }
+    public Artist Artist { get; set; }
     public Genre Genre { get; set; }
     public int Year { get; set; }
     public string Duration
@@ -30,7 +39,7 @@
     {
         Console.WriteLine("Informações do Álbum");
         Console.WriteLine($"Nome: {Title}");
-        Console.WriteLine($"Artista: {Artist}");
+        Console.WriteLine($"Artista: {Artist.Title}");
         Console.WriteLine($"Gênero: {Genre.Title}");
         Console.WriteLine($"Duração: {Duration}");
         Console.WriteLine("Faixas:");
@@ -39,5 +48,7 @@
         {
             Console.WriteLine($"- {music.Title} - {music.DurationInMinutes}");
         }
+
+        Console.WriteLine("");
     }
 }

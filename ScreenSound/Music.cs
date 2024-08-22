@@ -1,10 +1,18 @@
 ﻿class Music
 {
+    public Music(string title, Artist artist, Genre genre, int duration, bool active)
+    {
+        Title = title;
+        Artist = artist;
+        Genre = genre;
+        Duration = duration;
+        Active = active;
+    }
+
     public string Title { get; set; }
-    public string Artist { get; set; }
+    public Artist Artist { get; set; }
     public Genre Genre { get; set; }
     public int Duration { get; set; }
-
     public bool Active { get; set; }
 
     public string DurationInMinutes
@@ -25,7 +33,7 @@
 
     public void ShowMusicInfo()
     {
-        Console.WriteLine($"{Title} - {Artist}");
+        Console.WriteLine($"{Title} - {Artist.Title}");
         Console.WriteLine($"{Genre.Title}");
         Console.WriteLine($"{DurationInMinutes} - {Status}");
     }
