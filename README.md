@@ -15,6 +15,7 @@ Este repositório tem por objetivo registrar anotações e armazenar projetos pr
 - [Inicializadores](#inicializadores)
 - [Funções Anônimas](#funções-anônimas)
 - [Lambda](#lambda)
+- [Namespaces](#namespaces)
 
 ### Modificadores de Acesso
 
