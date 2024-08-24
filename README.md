@@ -298,3 +298,114 @@ Embora as funções lambda sejam uma ferramenta poderosa e muito usada no mundo 
 **Reutilização de Código:** Se você precisa reutilizar a lógica em várias partes do seu código, é mais adequado criar um método separado em vez de usar uma função lambda repetidamente. Isso promove a reutilização do código e torna mais fácil a manutenção.
 
 **Aumento da Complexidade do Código:** Em alguns casos, o uso excessivo de expressões lambda pode tornar o código mais difícil de entender e dar manutenção, especialmente quando as expressões lambdas são aninhadas. Nesses casos, pode ser melhor dividir o código em partes menores e mais legíveis.
+
+### Namespaces
+
+Em C#, um **namespace** é uma forma de organizar e agrupar classes, interfaces, structs e outros tipos. Isso ajuda a evitar conflitos de nomes e a estruturar o código de forma mais clara e modular. Usar namespaces ajuda a manter o código organizado e evita conflitos de nomes, especialmente em projetos grandes.
+
+**Sintaxe Básica:**
+
+```C#
+namespace Namespace;
+
+class Classe
+{
+    // Código ...
+}
+```
+
+```C#
+using Namespace;
+
+// Código ...
+
+```
+
+**Exemplo:**
+
+```C#
+namespace Biblioteca.Modelos;
+
+class Livro
+{
+    public string Titulo { get; set; }
+    public string Autor { get; set; }
+
+    public Livro(string titulo, string autor)
+    {
+        Titulo = titulo;
+        Autor = autor;
+    }
+}
+```
+
+```C#
+using Biblioteca.Modelos;
+
+Livro livro1 = new Livro("1984", "George Orwell");
+
+Console.WriteLine($"{livro1.Titulo} - {livro1.Autor}"); // 1984 - George Orwell
+```
+
+> A palavra chave ``namespace`` é usada para definir um escopo, agrupar e identificar tipos (classes, interfaces, structs, enums) em um projeto.
+
+> A palavra chave ``using`` é usada para importar namespaces e facilitar o uso dos tipos definidos neles.
+
+> Se a palavra chave ``using`` não for utilizada para referenciar um ``namespace``, será necessário qualificar o nome completo do tipo com o namespace **(FQN-Fully Qualified Name)**, como mostra o exemplo abaixo:
+
+```C#
+Biblioteca.Modelos.Livro livro1 = new Biblioteca.Modelos.Livro("1984", "George Orwell");
+
+Console.WriteLine($"{livro1.Titulo} - {livro1.Autor}"); // 1984 - George Orwell
+```
+
+> Cada segmento do namespace deve seguir o padrão **PascalCase**. Isso significa que se o nome do segmento for composto todas as palavras devem iniciar com letra **maiúscula**.
+
+> Os segmentos são conectados pelo caractere "." (ponto).
+
+> Uma regra geral para a nomeação de namespaces com diferentes segmentos é começar com o **nome da empresa**, em seguida o **produto** ou **tecnologia**, depois o **módulo** ou **função** e eventualmente um quarto segmento para o **submódulo** ou **subfunção**. Exemplo: ``Microsoft.AspNetCore.Mvc``.
+
+> Para mais informações, é recomendada a leitura da [documentação oficial](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/namespaces) e do [guia de boas práticas](https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/names-of-namespaces).
+
+#### Aliases
+
+Quando em um projeto existem classes com o mesmo nome porém, em diferentes namespaces, podemos utilizar o recurso de **aliases** pois, este nos ajuda a diferenciar e evitar ambiguidade.
+
+**Exemplo:**
+
+```C#
+namespace BibliotecaA;
+
+class Cliente
+{
+    public string Nome { get; set; }
+}
+```
+
+```C#
+namespace BibliotecaB;
+
+class Cliente
+{
+    public string Nome { get; set; }
+}
+```
+
+```C#
+using ClienteA = BibliotecaA.Cliente;
+using ClienteB = BibliotecaB.Cliente;
+
+ClienteA clienteA = new ClienteA
+{
+    Nome = "João"
+};
+
+ClienteA clienteB = new ClienteB
+{
+    Nome = "Maria"
+};
+
+Console.WriteLine($"Cliente da Biblioteca A: {clienteA.Nome}"); // João
+Console.WriteLine($"Cliente da Biblioteca B: {clienteB.Nome}"); // Maria
+
+```
