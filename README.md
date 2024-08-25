@@ -10,7 +10,9 @@ Este repositório tem por objetivo registrar anotações e armazenar projetos pr
 - [Atribuição de Valores](#atribuição-de-valores)
 - [Invocação de Métodos](#invocação-de-métodos)
 - [Atributos e Propriedades](#atributos-e-propriedades)
+- [Atributos e Propriedades Estáticas](#atributos-e-propriedades-estáticas)
 - [Métodos "get" e "set"](#métodos-get-e-set)
+- [Métodos Estáticos](#métodos-estáticos)
 - [Construtores](#construtores)
 - [Inicializadores](#inicializadores)
 - [Funções Anônimas](#funções-anônimas)
@@ -32,6 +34,10 @@ O membro da classe é acessível apenas dentro da própria classe ou estrutura o
 #### Protected
 
 O membro da classe é acessível dentro da própria classe e por classes derivadas (herança).
+
+#### Internal
+
+O membro da classe é acessível apenas no mesmo escopo de projeto (namespace).
 
 ### Classes
 
@@ -137,6 +143,42 @@ Fornecem uma forma de acessar e modificar os atributos de uma classe de maneira 
 
 > O nome de uma propriedade deve seguir o padrão **PascalCase**. Isso significa que se o nome da propriedade for composto todas as palavras devem iniciar com letra **maiúscula**.
 
+### Atributos e Propriedades Estáticas
+
+Em C#, um atributo ou propriedade ``static`` é um membro da classe que é compartilhado por todas as instâncias da classe, em vez de ter um valor diferente para cada instância. Isso significa que um atributo ou propriedade ``static`` pertence à própria classe e não a objetos individuais.
+
+- Atributo static: Um campo que é compartilhado por todas as instâncias da classe. Isso significa que há apenas uma cópia desse campo para toda a classe, e todas as instâncias da classe acessam e modificam essa mesma cópia.
+
+- Propriedade static: Similar a um campo static, mas fornece acesso controlado aos dados por meio de métodos ``get`` e ``set``. Também é compartilhada por todas as instâncias da classe.
+
+**Exemplo:**
+
+```C#
+// Atributo Estático
+private static int totalContadores = 0;
+
+// Propriedade Estática
+public static int TotalContadores
+{
+    get { return totalContadores; }
+}
+
+// Método Construtor
+public Contador()
+{
+    // Incrementa o atributo estático sempre que um novo objeto é instânciado.
+    totalContadores++;
+}
+```
+
+```C#
+Contador c1 = new Contador();
+Contador c2 = new Contador();
+Contador c3 = new Contador();
+
+Console.WriteLine($"Número total de contadores: {Contador.TotalContadores}."); // Número total de contadores: 3.
+```
+
 ### Métodos "get" e "set"
 
 Os métodos ``get`` e ``set`` são usados dentro de propriedades para controlar o acesso a um atributo privado de uma classe. Eles proporcionam uma forma de encapsular a leitura e a escrita dos valores dos atributos, permitindo a implementação de lógica adicional quando necessário.
@@ -209,6 +251,28 @@ Console.WriteLine($"Nome: {pessoa.Nome}");
 > Caso não seja necessário o uso de lógica adicional ou controle sobre como um campo é acessado e modificado, pode-se optar por usar campos públicos diretamente.
 
 > Apenas para "reforçar" o conceito quanto a utilização de propriedades, a manipulação de um atributo deve ser feita a partir da propriedade e não através do atributo diretamente.
+
+### Métodos Estáticos
+
+Em C#, um método ``static`` pertence propriamente à classe em vez de a uma instância específica da classe. Isso significa que um método ``static`` pode ser utilizado sem a necessidade de criar uma instância da classe.
+
+**Exemplo:**
+
+```C#
+class Calculadora
+{
+    public static int Soma(int a, int b)
+    {
+        return a + b;
+    }
+}
+```
+
+```C#
+int resultado = Calculadora.Somar(5, 7);
+
+Console.WriteLine($"O resultado da soma é {resultado}"); // O resultado da soma é 12.
+```
 
 ### Construtores
 
