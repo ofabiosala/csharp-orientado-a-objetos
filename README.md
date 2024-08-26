@@ -18,6 +18,9 @@ Este repositório tem por objetivo registrar anotações e armazenar projetos pr
 - [Funções Anônimas](#funções-anônimas)
 - [Lambda](#lambda)
 - [Namespaces](#namespaces)
+- [Aliases](#aliases)
+- [Herança](#herança)
+- [Sobrescrita](#sobrescrita)
 
 ### Modificadores de Acesso
 
@@ -474,3 +477,181 @@ Console.WriteLine($"Cliente da Biblioteca A: {clienteA.Nome}"); // João
 Console.WriteLine($"Cliente da Biblioteca B: {clienteB.Nome}"); // Maria
 
 ```
+
+### Herança
+
+O conceito de "herança" é fundamental na programação orientada a objetos, pois permite que uma nova classe seja criada baseando-se em uma classe já existente.
+
+A classe que é herdada é chamada de **classe base (ou superclasse)**, enquanto a nova classe que herda é chamada de **classe derivada (ou subclasse)**. A classe derivada herda membros (como métodos e propriedades) da classe base, podendo também adicionar novos membros ou sobrescrever os existentes.
+
+**Exemplo:**
+
+```C#
+// Classe Base
+class Animal
+{
+    public string Nome { get; set; }
+
+    public void Comer()
+    {
+        Console.WriteLine($"{Nome} está comendo.");
+    }
+}
+```
+
+```C#
+// Classe Derivada
+class Cachorro : Animal
+{
+    public void Latir()
+    {
+        Console.WriteLine($"{Nome} está latindo.");
+    }
+}
+```
+
+```C#
+Cachorro cachorro = new Cachorro();
+
+cachorro.Nome = "Rex";
+
+cachorro.Comer(); // Rex está comendo.
+
+cachorro.Latir(); // Rex está latindo.
+```
+
+> A herança permite a reutilização do código da classe base, evitando a duplicação de código em várias classes.
+
+> A classe derivada pode acessar atributos, propriedades ou métodos públicos e protegidos da classe base. Porém, não é possível acessar estes quando privados, pois não são acessíveis diretamente.
+
+> Construtores da classe base não são herdados pela classe derivada.
+
+### Sobrescrita
+
+Em C#, sobrescrita (ou override) é um conceito da programação orientada a objetos que permite que uma classe derivada forneça uma implementação específica de um método que já foi definido na sua classe base. A sobrescrita é um aspecto importante do polimorfismo, permitindo que métodos em classes derivadas alterem o comportamento de métodos herdados de suas classes base.
+
+Para sobrescrever um método em C#, é necessário seguir algumas etapas:
+
+- Definir o método na classe base, ou seja, o método na classe base deve ser marcado com a palavra-chave ``virtual``, indicando que ele pode ser sobrescrito por classes derivadas.
+
+- Implementar o método na classe derivada, ou seja, a classe derivada usa a palavra-chave ``override`` para fornecer uma nova implementação do método.
+
+**Exemplo:**
+
+```C#
+// Classe Base
+class Animal
+{
+    public virtual void FazerSom()
+    {
+        Console.WriteLine("O animal faz um som.");
+    }
+}
+```
+
+```C#
+// Classe Derivada
+class Cachorro : Animal
+{
+    public override void FazerSom()
+    {
+        Console.WriteLine("O cachorro late.");
+    }
+}
+```
+
+```C#
+Animal cachorro = new Cachorro();
+cachorro.FazerSom(); // O cachorro late.
+```
+
+> O método sobrescrito deve ter a mesma assinatura (nome, tipo de retorno e parâmetros) do método na classe base.
+
+> A palavra-chave ``sealed`` evita que uma classe derivada sobrescreva um método que já foi sobrescrito.
+
+**Exemplo:**
+
+```C#
+// Classe Base
+class Animal
+{
+    public virtual void FazerSom()
+    {
+        Console.WriteLine("O animal faz um som.");
+    }
+}
+```
+
+```C#
+// Classe Derivada
+class Cachorro : Animal
+{
+    public override void FazerSom()
+    {
+        Console.WriteLine("O cachorro late.");
+    }
+}
+```
+
+```C#
+// Classe Derivada
+class Bulldog : Cachorro
+{
+    public sealed override void FazerSom()
+    {
+        Console.WriteLine("O bulldog faz um som característico.");
+    }
+}
+```
+
+```C#
+// Classe Derivada
+class Beagle : Bulldog
+{
+    // Tentativa de sobrescrever método resultará em erro de compilação
+    // public override void FazerSom()
+    // {
+    //     Console.WriteLine("O beagle late.");
+    // }
+}
+```
+
+```C#
+Animal bulldog = new Bulldog();
+bulldog.FazerSom(); // O bulldog faz um som característico.
+```
+
+> A palavra chave ``base`` é utilizada para invocar o método da classe base dentro da implementação sobrescrita. Isso é útil quandoé necessário adicionar o comportamento adicional à implementação existente, mantendo a funcionalidade da classe base.
+
+**Exemplo:**
+
+```C#
+// Classe Base
+class Animal
+{
+    public virtual void FazerSom()
+    {
+        Console.WriteLine("O animal faz um som.");
+    }
+}
+```
+
+```C#
+// Classe Derivada
+class Cachorro : Animal
+{
+    public override void FazerSom()
+    {
+        base.FazerSom();
+        Console.WriteLine("O cachorro late.");
+    }
+}
+```
+
+```C#
+Animal cachorro = new Cachorro();
+cachorro.FazerSom(); // O animal faz um som.
+                     // O cachorro late.
+```
+
+> A sobrescrita é uma ferramenta poderosa para criar hierarquias de classes flexíveis e extensíveis, permitindo que você modifique e especialize o comportamento herdado de maneira controlada e previsível.
