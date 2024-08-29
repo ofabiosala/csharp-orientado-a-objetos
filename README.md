@@ -21,6 +21,7 @@ Este repositório tem por objetivo registrar anotações e armazenar projetos pr
 - [Aliases](#aliases)
 - [Herança](#herança)
 - [Sobrescrita](#sobrescrita)
+- [Interface](#interface)
 
 ### Modificadores de Acesso
 
@@ -655,3 +656,67 @@ cachorro.FazerSom(); // O animal faz um som.
 ```
 
 > A sobrescrita é uma ferramenta poderosa para criar hierarquias de classes flexíveis e extensíveis, permitindo que você modifique e especialize o comportamento herdado de maneira controlada e previsível.
+
+### Interface
+
+Em C#, uma interface é um tipo que define um "contrato" ou uma "promessa" de métodos e propriedades que uma classe deve implementar. Interfaces são usadas para garantir que classes diferentes possam implementar o mesmo conjunto de métodos, proporcionando um meio de "intercambiar" objetos de diferentes classes de maneira previsível e consistente.
+
+No entanto, a interface em si não fornece a implementação desses métodos, ou seja, isso fica a cargo das classes que implementam a interface.
+
+**Exemplo:**
+
+```C#
+interface IAnimal
+{
+    void Comer();
+    void Dormir();
+}
+```
+
+```C#
+class Cachorro : IAnimal
+{
+    public void Comer()
+    {
+        Console.WriteLine("O cachorro está comendo.");
+    }
+
+    public void Dormir()
+    {
+        Console.WriteLine("O cachorro está dormindo.");
+    }
+}
+```
+
+```C#
+class Gato : IAnimal
+{
+    public void Comer()
+    {
+        Console.WriteLine("O gato está comendo.");
+    }
+
+    public void Dormir()
+    {
+        Console.WriteLine("O gato está dormindo.");
+    }
+}
+```
+
+```C#
+IAnimal cachorro = new Cachorro();
+cachorro.Comer(); //
+cachorro.Dormir(); //
+
+IAnimal gato = new Gato();
+gato.Comer(); //
+gato.Dormir(); //
+```
+
+#### Declarando Tipo Como Interface
+
+Quando é declarada uma variável usando o tipo da interface, pode-se apenas acessar os membros da interface que foram implementados pela classe.
+
+#### Declarando Tipo Como Classe
+
+Quando é declarada uma variável usando o tipo da classe, pode-se acessar a todos os métodos e propriedades definidos na classe, incluindo aqueles que são específicos da classe e não são parte das interfaces implementadas.
